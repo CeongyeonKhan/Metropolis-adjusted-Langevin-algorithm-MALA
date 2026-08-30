@@ -1,6 +1,8 @@
 # 能量—梯度误差约束自适应混合 MALA
 
-拟构造一种能量—梯度误差约束的自适应混合Metropolis调整Langevin算法（Metropolis-adjusted Langevin algorithm, MALA），下文将完整方法记为 EGE-AH-MALA。该方法由两个固定权重混合的转移核组成：局部核利用位置相关步长和提议噪声完成盆地内探索，全局核利用具有显式密度的独立提议促进模态间转移；两个核均通过Metropolis–Hastings（MH）接受—拒绝校正保持同一接受目标不变。
+该项目拟构造一种能量—梯度误差约束的自适应混合Metropolis调整Langevin算法（Metropolis-adjusted Langevin algorithm, MALA），下文将完整方法记为 EGE-AH-MALA。
+该方法由两个固定权重混合的转移核组成：局部核利用位置相关步长和提议噪声完成盆地内探索，全局核利用具有显式密度的独立提议促进模态间转移；
+两个核均通过Metropolis–Hastings（MH）接受—拒绝校正保持同一接受目标不变。
 
 ## 1. 已实现内容
 
@@ -23,7 +25,7 @@
 
 ## 2. 安装
 
-建议使用 Python 3.10 或更高版本。以下命令均应在解压后的项目根目录执行。
+建议使用 Python 3.10 或更高版本。以下命令均应在git后的项目根目录执行。
 
 ```bash
 python -m venv .venv
@@ -131,11 +133,9 @@ A2-O 是不可部署的预言机性能上界。A4-NC 同时无条件接受局部
 ## 6. 必须保留的正确性约束
 
 通用局部提议实现为
-$\[
-\mu_x=x-h_x\tau_x^\gamma\widehat g_{\rm prop}(x),
-\qquad
-v_x=2h_x\tau_x .
-\]$
+
+$\[\mu_x=x-h_x\tau_x^\gamma\widehat g_{\rm prop}(x),\qquadv_x=2h_x\tau_x .\]$
+
 因此 $\(\gamma=0\)$ 时漂移项不会错误地乘以 $\(\tau\)$。反向密度在候选点完整重算 $\(z_E,z_g,\delta_U,\widehat L,h,\tau,\widehat g_{\rm prop}\)$。正式采样阶段不更新模型、盆地统计、校准系数、曲率定义、全局提议或 $\(h_0\)$。
 
 局部—全局路由概率 $\(\rho\)$ 在整个正式阶段固定。不得依据当前位置、能量或“局部步长过小”改走全局分支；若将来引入状态相关路由，必须在接受率中加入正反向分支选择概率。
