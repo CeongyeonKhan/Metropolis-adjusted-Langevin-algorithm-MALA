@@ -43,7 +43,7 @@ python -m pip install -e .
 
 ## 3. 首次运行
 
-先运行 CPU smoke测试。该配置包含 8 条链、120 步及 4 个方法，并在本地生成 W&B 离线运行：
+先运行 CPU smoke 测试。该配置包含 8 条链、120 步及 4 个方法，并在本地生成 W&B 离线运行：
 
 ```bash
 python -m ege_ah_mala.cli run --config configs/smoke.yaml
@@ -131,8 +131,11 @@ A2-O 是不可部署的预言机性能上界。A4-NC 同时无条件接受局部
 ## 6. 必须保留的正确性约束
 
 通用局部提议实现为
-<img width="590" height="122" alt="image" src="https://github.com/user-attachments/assets/3c56fe30-3acf-4b01-a403-b874bbd30963" />
-
+&\[
+\mu_x=x-h_x\tau_x^\gamma\widehat g_{\rm prop}(x),
+\qquad
+v_x=2h_x\tau_x .
+\]$
 
 因此 \(\gamma=0\) 时漂移项不会错误地乘以 \(\tau\)。反向密度在候选点完整重算 \(z_E,z_g,\delta_U,\widehat L,h,\tau,\widehat g_{\rm prop}\)。正式采样阶段不更新模型、盆地统计、校准系数、曲率定义、全局提议或 \(h_0\)。
 
