@@ -134,7 +134,11 @@ A2-O 是不可部署的预言机性能上界。A4-NC 同时无条件接受局部
 
 通用局部提议实现为
 
-$\[\mu_x=x-h_x\tau_x^\gamma\widehat g_{\rm prop}(x),\qquadv_x=2h_x\tau_x .\]$
+$\[
+\mu_x=x-h_x\tau_x^\gamma\widehat g_{\rm prop}(x),
+\qquad
+v_x=2h_x\tau_x .
+\]$
 
 因此 $\(\gamma=0\)$ 时漂移项不会错误地乘以 $\(\tau\)$。反向密度在候选点完整重算 $\(z_E,z_g,\delta_U,\widehat L,h,\tau,\widehat g_{\rm prop}\)$。正式采样阶段不更新模型、盆地统计、校准系数、曲率定义、全局提议或 $\(h_0\)$。
 
