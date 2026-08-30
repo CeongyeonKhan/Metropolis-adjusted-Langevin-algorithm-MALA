@@ -1,6 +1,6 @@
 # 能量—梯度误差约束自适应混合 MALA
 
-拟构造一种能量—梯度误差约束的自适应混合Metropolis调整Langevin算法（Metropolis-adjusted Langevin algorithm, MALA），下文将完整方法记为 EGE-AH-MALA。该方法由两个固定权重混合的转移核组成：局部核利用位置相关步长和提议噪声完成盆地内探索，全局核利用具有显式密度的独立提议促进模态间转移；两个核均通过Metropolis–Hastings（ MH）接受—拒绝校正保持同一接受目标不变。
+拟构造一种能量—梯度误差约束的自适应混合Metropolis调整Langevin算法（Metropolis-adjusted Langevin algorithm, MALA），下文将完整方法记为 EGE-AH-MALA。该方法由两个固定权重混合的转移核组成：局部核利用位置相关步长和提议噪声完成盆地内探索，全局核利用具有显式密度的独立提议促进模态间转移；两个核均通过Metropolis–Hastings（MH）接受—拒绝校正保持同一接受目标不变。
 
 ## 1. 已实现内容
 
