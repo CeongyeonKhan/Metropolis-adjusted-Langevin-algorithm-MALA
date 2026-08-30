@@ -1,0 +1,35 @@
+seed: 20260829
+device: cpu
+dtype: float64
+target:
+  family: bimodal
+  dim: 2
+  separation: 4.0
+error:
+  kind: exact
+  ensemble_size: 5
+  features: 64
+  relative_rmse: 0.0
+calibration:
+  num_points: 4096
+adaptation:
+  h0: 0.04
+  h_max: 0.5
+sampler:
+  methods: [B0, B1, B2, A1]
+  num_chains: 64
+  num_steps: 20000
+  initialization: single_mode
+  diagnostic_stride: 5
+  trajectory_stride: 20
+  checkpoints: [0, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000]
+metrics:
+  fid_reference_repeats: 100
+wandb:
+  mode: offline
+  project: ege-ah-mala
+  group: P1-bimodal
+output:
+  root: outputs
+  experiment_name: p1_bimodal
+

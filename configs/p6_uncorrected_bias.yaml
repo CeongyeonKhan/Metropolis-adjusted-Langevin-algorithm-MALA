@@ -1,0 +1,37 @@
+seed: 20260829
+device: cpu
+dtype: float64
+target:
+  family: asymmetric_bimodal
+  dim: 2
+  separation: 4.0
+  rare_weight: 0.1
+error:
+  kind: fourier
+  ensemble_size: 5
+  features: 64
+  relative_rmse: 0.2
+calibration:
+  num_points: 8192
+adaptation:
+  h0: 0.04
+global_proposal:
+  probability: 0.05
+sampler:
+  methods: [A4, A4-NC]
+  num_chains: 256
+  num_steps: 50000
+  initialization: stationary
+  diagnostic_stride: 10
+  trajectory_stride: 50
+  checkpoints: [0, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000]
+metrics:
+  fid_reference_repeats: 500
+wandb:
+  mode: offline
+  project: ege-ah-mala
+  group: P6-correction-bias
+output:
+  root: outputs
+  experiment_name: p6_uncorrected_bias
+

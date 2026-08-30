@@ -1,0 +1,51 @@
+seed: 20260829
+device: cpu
+dtype: float64
+target:
+  family: bimodal
+  dim: 2
+  separation: 2.0
+error:
+  kind: fourier
+  ensemble_size: 5
+  features: 16
+  relative_rmse: 0.2
+calibration:
+  num_points: 256
+  fit_fraction: 0.5
+  calibration_fraction: 0.25
+reference:
+  source: fitted
+  num_points: 256
+  em_iterations: 15
+adaptation:
+  h0: 0.04
+  h_max: 0.3
+  gamma: 1.0
+global_proposal:
+  probability: 0.05
+sampler:
+  methods: [B1, A2-P, A4, A4-NC]
+  num_chains: 8
+  num_steps: 120
+  initialization: single_mode
+  diagnostic_stride: 2
+  trajectory_stride: 2
+  crossing_stride: 2
+  recorded_chains: 4
+  checkpoints: [0, 10, 30, 60, 120]
+metrics:
+  fid_reference_repeats: 8
+  min_rhat_draws: 8
+wandb:
+  mode: offline
+  project: ege-ah-mala
+  tags: [smoke, synthetic, pytorch]
+  log_plots: true
+  log_artifact: true
+output:
+  root: outputs
+  experiment_name: smoke
+  save_history: true
+  plot_grid_size: 30
+  reservoir_size: 2000

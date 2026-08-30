@@ -1,0 +1,39 @@
+seed: 20260829
+device: cpu
+dtype: float64
+target:
+  family: highdim
+  dim: 16
+  modes: 8
+  condition_number: 30.0
+  highdim_mahalanobis: 6.0
+error:
+  kind: fourier
+  ensemble_size: 5
+  features: 64
+  relative_rmse: 0.2
+calibration:
+  num_points: 8192
+adaptation:
+  h0: 0.01
+  curvature_mode: power
+  curvature_probes: 2
+  curvature_power_iterations: 4
+sampler:
+  methods: [B1, B2, A2-P, A4]
+  num_chains: 32
+  num_steps: 20000
+  initialization: single_mode
+  diagnostic_stride: 20
+  trajectory_stride: 100
+  checkpoints: [0, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000]
+metrics:
+  fid_reference_repeats: 100
+wandb:
+  mode: offline
+  project: ege-ah-mala
+  group: P7-highdim
+output:
+  root: outputs
+  experiment_name: p7_highdim
+  plot_grid_size: 30

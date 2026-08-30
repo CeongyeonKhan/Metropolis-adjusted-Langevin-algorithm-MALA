@@ -1,0 +1,35 @@
+seed: 20260829
+device: cpu
+dtype: float64
+target:
+  family: single
+  dim: 2
+  condition_number: 100.0
+error:
+  kind: exact
+  ensemble_size: 5
+  features: 32
+  relative_rmse: 0.0
+calibration:
+  num_points: 2048
+adaptation:
+  h0: 0.02
+  h_max: 0.2
+sampler:
+  methods: [B0, B1, A1, A4-NC]
+  num_chains: 64
+  num_steps: 10000
+  initialization: overdispersed
+  diagnostic_stride: 5
+  trajectory_stride: 20
+  checkpoints: [0, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
+metrics:
+  fid_reference_repeats: 100
+wandb:
+  mode: offline
+  project: ege-ah-mala
+  group: P0-single-gaussian
+output:
+  root: outputs
+  experiment_name: p0_single_gaussian
+

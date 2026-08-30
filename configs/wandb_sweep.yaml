@@ -1,0 +1,28 @@
+method: random
+program: scripts/run_wandb_sweep.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - --base-config
+  - configs/p5_full.yaml
+metric:
+  name: sweep/objective
+  goal: minimize
+parameters:
+  adaptation.h0:
+    distribution: log_uniform_values
+    min: 0.0001
+    max: 0.2
+  adaptation.alpha_energy:
+    values: [0.0, 0.125, 0.25, 0.5]
+  adaptation.tau_max:
+    values: [1.0, 1.5, 2.0, 3.0]
+  adaptation.beta_energy:
+    values: [0.5, 1.0, 2.0, 4.0]
+  adaptation.beta_gradient:
+    values: [0.5, 1.0, 2.0, 4.0]
+  adaptation.epsilon_proposal:
+    values: [0.01, 0.025, 0.05, 0.1]
+  global_proposal.probability:
+    values: [0.01, 0.025, 0.05, 0.1]

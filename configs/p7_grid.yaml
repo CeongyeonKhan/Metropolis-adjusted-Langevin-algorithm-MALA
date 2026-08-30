@@ -1,0 +1,32 @@
+seed: 20260829
+device: cpu
+dtype: float64
+target:
+  family: grid
+  dim: 2
+  grid_size: 3
+  grid_spacing: 3.0
+error:
+  kind: fourier
+  ensemble_size: 5
+  features: 64
+  relative_rmse: 0.2
+calibration:
+  num_points: 8192
+adaptation:
+  h0: 0.03
+sampler:
+  methods: [B1, B2, A2-P, A4]
+  num_chains: 64
+  num_steps: 50000
+  initialization: single_mode
+  diagnostic_stride: 10
+  checkpoints: [0, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000]
+wandb:
+  mode: offline
+  project: ege-ah-mala
+  group: P7-grid
+output:
+  root: outputs
+  experiment_name: p7_grid
+
