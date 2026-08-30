@@ -131,7 +131,7 @@ A2-O 是不可部署的预言机性能上界。A4-NC 同时无条件接受局部
 ## 6. 必须保留的正确性约束
 
 通用局部提议实现为
-&\[
+$\[
 \mu_x=x-h_x\tau_x^\gamma\widehat g_{\rm prop}(x),
 \qquad
 v_x=2h_x\tau_x .
